@@ -1,1 +1,50 @@
 Day -1 quick Revsion on arrays for DSA
+What Is an Array?
+An array is a collection of elements stored in contiguous memory locations and accessed using indexing. All elements are of the same data type.
+
+Commonly Used Methods with Time Complexity
+Arrays.sort(array)	Sorts the entire array (ascending order by default)	O(n log n)
+Arrays.sort(array, fromIndex, toIndex)	Sorts a subarray	O(k log k), k = (toIndex - fromIndex)
+Arrays.binarySearch(array, key)	Searches for key in sorted array	O(log n)
+Arrays.binarySearch(array, fromIndex, toIndex, key)	Searches for key in subarray	O(log k)
+Arrays.equals(arr1, arr2)	Compares two arrays for equality	O(n)
+Arrays.toString(array)	Converts array to a readable string	O(n)
+Arrays.fill(array, val)	Fills the entire array with a value	O(n)
+Arrays.fill(array, fromIndex, toIndex, val)	Fills part of the array	O(k), k = (toIndex - fromIndex)
+Arrays.copyOf(array, newLength)	Copies array to a new array with desired length	O(min(n, newLength))
+Arrays.copyOfRange(array, from, to)	Copies part of array	O(k)
+Arrays.setAll(array, lambda)	Sets each element using a generator function	O(n)
+Arrays.stream(array)	Converts array to a Stream (Java 8+)	O(1)
+Arrays.deepEquals(arr1, arr2)	Compares nested arrays	O(n) recursively
+Arrays.deepToString(arr)	Converts nested arrays to string	O(n) recursively
+Arrays.asList(array)	Converts array to fixed-size List	O(1)
+
+
+Example 
+Arrays.copyOf() and Arrays.copyOfRange()
+int[] a = {1, 2, 3};
+int[] b = Arrays.copyOf(a, 5);       // [1, 2, 3, 0, 0]
+int[] c = Arrays.copyOfRange(a, 1, 3); // [2, 3]
+
+ Arrays.asList() – Fixed-size List (backed by the array)
+String[] fruits = {"apple", "banana"};
+List<String> list = Arrays.asList(fruits);  // Changes in list affect array
+
+| Category       | Methods                                                |
+| -------------- | ------------------------------------------------------ |
+| **Sorting**    | `sort(arr)`, `sort(arr, from, to)`                     |
+| **Searching**  | `binarySearch(arr, key)`                               |
+| **Comparison** | `equals()`, `deepEquals()`                             |
+| **Copying**    | `copyOf()`, `copyOfRange()`, `System.arraycopy()`      |
+| **Filling**    | `fill()`, `setAll()`                                   |
+| **Conversion** | `toString()`, `deepToString()`, `asList()`, `stream()` |
+
+Performance Tips for DSA Prep
+
+Use Arrays.sort() when required — optimized with TimSort (hybrid of merge + insertion sort).
+
+Avoid Arrays.asList() if you need a flexible list.
+
+Use System.arraycopy() for performance-critical array copy (lower-level, faster than copyOf()).
+
+
