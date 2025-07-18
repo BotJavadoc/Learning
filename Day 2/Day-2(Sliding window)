@@ -1,1 +1,81 @@
 Sliding window
+
+Index:     0   1   2   3   4   5   6
+Array:    [4,  2,  1,  7,  8,  1,  2]
+
+🔍 Step 1: Window starts at index 0 to 2 (size = 3)
+
+           ↓   ↓   ↓
+Index:     0   1   2   3   4   5   6
+Array:    [4,  2,  1,  7,  8,  1,  2]
+Window:      [4, 2, 1] → sum = 7
+
+🔁 Move window right → Remove 4, Add 7
+
+               ↓   ↓   ↓
+Index:     0   1   2   3   4   5   6
+Array:    [4,  2,  1,  7,  8,  1,  2]
+Window:        [2, 1, 7] → sum = 10
+
+🔁 Move again → Remove 2, Add 8
+
+                   ↓   ↓   ↓
+Index:     0   1   2   3   4   5   6
+Array:    [4,  2,  1,  7,  8,  1,  2]
+Window:            [1, 7, 8] → sum = 16
+
+🔁 And so on...
+
+🌀 Real-Life Analogy: Spotify Playlist Skipping
+Imagine you're reviewing a playlist of songs:
+
+You only want to listen to 3 at a time
+
+Every few minutes, you skip to the next 3
+
+But you don't start over; you just slide the group forward by 1
+
+That’s fixed-size sliding window — your “now playing” panel is like the window.
+
+String: "a b c a b b"
+Index:   0 1 2 3 4 5
+
+Start: left = 0, right = 0 → Add 'a'
+Window: [a]
+
+→ Add 'b'
+Window: [a b]
+
+→ Add 'c'
+Window: [a b c] → ❌ Now we have 3 unique → Too many!
+
+→ Shrink from left → Remove 'a'
+Window: [b c]
+
+→ Still valid (2 unique)
+→ Add 'a'
+Window: [b c a] → ❌ Again 3 unique → Shrink from left
+This is variable window:
+
+Keep expanding while condition is valid
+
+Shrink from left when it breaks
+
+Track the best length along the way
+
+🤯 In Real Life: Browsing Apps with Limited RAM
+You open tabs (expand window)
+
+If memory is full (too many), close older tabs (shrink window)
+
+Always trying to maximize active tabs without crossing limit
+
+That's a variable-size sliding window!
+
+[4, 2, 1, 7, 8]     →  size = 3
+ ^     ^
+start  end          → just slides right step by step
+
+[a, b, c, a, b, b]  → max 2 unique
+ ^           ^
+start      end      → dynamically expands/shrinks
