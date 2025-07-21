@@ -1,0 +1,167 @@
+The List Interface in Java extends the Collection Interface and is a part of the java.util package. 
+It is used to store the ordered collections of elements. In a Java List, 
+we can organize and manage the data sequentially.
+Java List - Operations
+List can be used only with a class that implements this interface. Now, let's see how to perform a few frequently used operations on the List.
+
+Operation 1: Adding elements to List using add() method
+Operation 2: Updating elements in List using set() method
+Operation 3: Searching for elements using indexOf(), lastIndexOf methods
+Operation 4: Removing elements using remove() method
+Operation 5: Accessing Elements in List using get() method
+Operation 6: Checking if an element is present in the List using contains() method
+
+
+Here's your **Java Collections - List Interface Revision Notes** with clear explanation, operations, and practical examples. This will act as your **one-stop revision** before interviews or coding rounds.
+
+---
+
+## ✅ What is a List in Java?
+
+`List` is an **interface** in the Java Collections Framework that:
+
+* Stores **ordered** elements (insertion order is preserved).
+* Allows **duplicate** elements.
+* Provides **indexed access** to elements (like arrays).
+
+### 🔗 Interface Hierarchy:
+
+`List<E>` extends `Collection<E>` → `Iterable<E>`
+
+---
+
+## 🧱 Implementations of List
+
+1. **ArrayList**
+2. **LinkedList**
+3. **Vector**
+4. **Stack** (extends Vector)
+
+---
+
+## 📦 Commonly Used Classes and When to Use:
+
+| Class      | Backed By          | Performance                                | Thread Safe | Best Used For             |
+| ---------- | ------------------ | ------------------------------------------ | ----------- | ------------------------- |
+| ArrayList  | Array              | Fast in search, slow in insertion/deletion | ❌           | Frequent access           |
+| LinkedList | Doubly Linked List | Fast insertion/deletion, slow search       | ❌           | Frequent add/remove       |
+| Vector     | Array              | Like ArrayList, but thread-safe            | ✅           | Legacy, avoid if possible |
+| Stack      | Vector             | LIFO structure                             | ✅           | Stack-based logic         |
+
+---
+
+## 🔧 Key Operations in List
+
+### 🔢 1. **Add elements**
+
+```java
+list.add("Apple");
+list.add(1, "Banana"); // Insert at index
+```
+
+### 📤 2. **Remove elements**
+
+```java
+list.remove("Apple");
+list.remove(0); // Remove by index
+```
+
+### 🔍 3. **Get/Set elements**
+
+```java
+String fruit = list.get(0);
+list.set(1, "Mango");
+```
+
+### 🕵️‍♂️ 4. **Search elements**
+
+```java
+list.contains("Mango"); // true or false
+list.indexOf("Mango");  // returns index or -1
+list.lastIndexOf("Mango");
+```
+
+### 🔄 5. **Iterate over elements**
+
+```java
+for (String item : list) {
+    System.out.println(item);
+}
+
+list.forEach(System.out::println);
+
+Iterator<String> it = list.iterator();
+while (it.hasNext()) {
+    System.out.println(it.next());
+}
+```
+
+### 🧹 6. **Clear list**
+
+```java
+list.clear();
+```
+
+---
+
+## ✅ Example Code
+
+```java
+import java.util.*;
+
+public class ListExample {
+    public static void main(String[] args) {
+        // Using ArrayList
+        List<String> fruits = new ArrayList<>();
+
+        // Add
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Mango");
+
+        // Insert at index
+        fruits.add(1, "Orange");
+
+        // Get
+        System.out.println("First fruit: " + fruits.get(0));
+
+        // Set
+        fruits.set(2, "Grapes");
+
+        // Remove
+        fruits.remove("Apple");
+        fruits.remove(1); // removes Orange
+
+        // Contains
+        System.out.println("Contains Mango? " + fruits.contains("Mango"));
+
+        // Iteration
+        for (String fruit : fruits) {
+            System.out.println("Fruit: " + fruit);
+        }
+    }
+}
+```
+
+---
+
+## 📚 Bonus Tips for Interviews
+
+* **ArrayList** = fast random access (O(1)), slow insertion/removal at middle (O(n)).
+* **LinkedList** = slow access (O(n)), fast insert/delete at start/middle.
+* Prefer `List<String> list = new ArrayList<>();` (use interface for flexibility).
+* Avoid `Vector`, it's old and synchronized by default.
+* Use `Collections.synchronizedList()` if you want thread-safe list.
+
+---
+
+## ⚡ Frequently Used Utility Methods
+
+```java
+Collections.sort(list);           // Sorts list
+Collections.reverse(list);        // Reverses the list
+Collections.shuffle(list);        // Random order
+Collections.unmodifiableList(list); // Make it read-only
+```
+List<Integer> sub = list.subList(2, 5); 
+can extract the portion of list using this
