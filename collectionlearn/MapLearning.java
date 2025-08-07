@@ -21,7 +21,7 @@ public class MapLearning {
         System.out.println(a);
         for(Map.Entry<String,String> entry : map.entrySet()) {
             System.out.println("Key : " +entry.getKey() + " Value : "+ entry.getValue()+" "+Collections.frequency(a, entry.getValue()));
-
         }
+        
     }
 }
