@@ -1,0 +1,169 @@
+/* --- Root Variables for easy theme changes --- */
+:root {
+  --bg-color: #020617; /* slate-950 */
+  --card-bg: rgba(15, 23, 42, 0.6); /* slate-900 with transparency */
+  --border-color: rgba(51, 65, 85, 0.4); /* slate-700 */
+  --text-color: #e2e8f0; /* slate-200 */
+  --muted-text: #94a3b8; /* slate-400 */
+  
+  --primary-glow: #22c55e; /* green-500 */
+  --secondary-glow: #f59e0b; /* amber-500 */
+  --focus-ring: rgba(99, 102, 241, 0.5); /* indigo-500 */
+  
+  --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
+}
+
+/* --- Base & Body Styles --- */
+* {
+  box-sizing: border-box;
+}
+
+/* --- Main Container --- */
+.counter-container {
+  min-height: 100dvh;
+  display: grid;
+  place-content: center;
+  padding: 1rem;
+}
+
+/* --- Glassmorphism Card --- */
+.counter-card {
+  position: relative;
+  width: min(480px, 95vw);
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  padding: 2rem 2.5rem;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  overflow: hidden;
+  text-align: center;
+}
+
+/* --- Aurora Glow Effect --- */
+.aurora-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 180deg at 50% 50%,
+    rgba(34, 197, 94, 0.5) 0%, 
+    rgba(59, 130, 246, 0.5) 50%,
+    rgba(168, 85, 247, 0.5) 100%
+  );
+  animation: rotate 15s linear infinite;
+  z-index: -1;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.card-title {
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--muted-text);
+  letter-spacing: 0.5px;
+}
+
+/* --- Animated Counter Display --- */
+.count-display {
+  margin: 1rem auto 2rem;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  padding: 8px;
+  position: relative;
+  /* Animated gradient border */
+  background: conic-gradient(from var(--angle, 0deg), var(--primary-glow), var(--secondary-glow), var(--primary-glow));
+  animation: spin 5s linear infinite;
+}
+
+@keyframes spin {
+  to { --angle: 360deg; }
+}
+
+/* This is a CSS property that will be animated */
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.count-display-inner {
+  background: #000000; /* slate-900 */
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  font-size: clamp(3rem, 10vw, 4.5rem);
+  font-weight: 800;
+  color: var(--text-color);
+}
+
+/* --- Button Styles --- */
+.button-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 0.75rem;
+}
+
+.btn {
+  appearance: none;
+  border: 1px solid var(--border-color);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
+  color: var(--text-color);
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.1s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.btn:hover {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+}
+
+.btn:focus-visible {
+  box-shadow: 0 0 0 4px var(--bg-color), 0 0 0 6px var(--focus-ring);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(50%);
+}
+
+/* Specific button colors */
+.btn.primary {
+  box-shadow: inset 0 0 20px rgba(34, 197, 94, 0.2);
+}
+.btn.secondary {
+  box-shadow: inset 0 0 20px rgba(245, 158, 11, 0.2);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 480px) {
+  .counter-card {
+    padding: 1.5rem;
+  }
+  .count-display {
+    width: 140px;
+    height: 140px;
+  }
+  .button-group {
+    grid-template-columns: 1fr; /* Stack buttons on small screens */
+  }
+}
