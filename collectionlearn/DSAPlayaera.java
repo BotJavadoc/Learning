@@ -1,42 +1,28 @@
 package collectionlearn;
 
+
+
 public class DSAPlayaera {
     public static void main(String[] args) {
-        int arr[] = {3, 4, 5, 1, 2};
-        DSAPlayaera dsaPlayaera = new DSAPlayaera();
+        int nums[] = {2,6,5,8,11};
+        int n = nums.length;
+        int k = 14;
+        int left =0;
+        int right =0;
+        int sum=0;
 
-        boolean ans = dsaPlayaera.checkSort(arr);
-        System.err.println(ans);
-
-        boolean checkkrot = dsaPlayaera.checkRot(arr);
-        System.out.println(checkkrot);
-    }
-
-    public boolean checkRot(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            if (checkSort(arr)) { 
-                return true;
+        while(n > left) {
+            if(left>right) {
+                left+=1;
+                right = n-1;
             }
-            rotate(arr); 
-        }
-        return false;
-    }
-
-    public boolean checkSort(int arr[]) {
-        for (int i = 0; i < arr.length - 1; i++) {
-            if (arr[i] > arr[i + 1]) {
-                return false;
+            sum = nums[left]+nums[right];
+            System.out.println("Sum for each stage "+sum);
+            if(sum == k) {
+                System.out.println(left+" "+right);
             }
+            right-=1;
         }
-        return true;
-    }
-
-    public int[] rotate(int arr[]) {
-        int first = arr[0];
-        for (int i = 0; i < arr.length - 1; i++) {
-            arr[i] = arr[i + 1];
-        }
-        arr[arr.length - 1] = first;
-        return arr;
-    }
+       
+}
 }
