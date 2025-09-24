@@ -1,28 +1,25 @@
 package collectionlearn;
 
-
-
 public class DSAPlayaera {
     public static void main(String[] args) {
-        int nums[] = {2,6,5,8,11};
-        int n = nums.length;
-        int k = 14;
-        int left =0;
-        int right =0;
-        int sum=0;
+        int nums[] = {7,1,5,3,6,4};
+        int min =nums[0];
+        int pos=0;
+        int maxProf =0;
 
-        while(n > left) {
-            if(left>right) {
-                left+=1;
-                right = n-1;
+        for(int i=0;i<nums.length;i++) {
+            if(min>nums[i]) {
+                min=nums[i];
+                pos = i+1;
             }
-            sum = nums[left]+nums[right];
-            System.out.println("Sum for each stage "+sum);
-            if(sum == k) {
-                System.out.println(left+" "+right);
-            }
-            right-=1;
         }
-       
+        for(int i=pos;i<nums.length;i++) {
+            if(maxProf<nums[i]) {
+                maxProf = nums[i];
+            }
+        }
+        System.out.println("Max profit is "+maxProf);
+
+        System.out.println("Min number is "+min+" and its position is "+pos);
 }
 }
