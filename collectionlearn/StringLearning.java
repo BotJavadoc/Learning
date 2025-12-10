@@ -1,22 +1,29 @@
 package collectionlearn;
 
-import java.util.HashMap;
+import java.util.*;;
 
 public class StringLearning {
 public static void main(String[] args) {
-    String s = "badc"; 
-    String t = "baba";
-    HashMap<Character,Character> map = new HashMap<>();
-    for(int i=0;i<s.length();i++) {
-        if(map.containsKey(s.charAt(i))) {
-            System.err.println(s.charAt(i));
-            if(map.get(s.charAt(i))!= t.charAt(i)) {       
-            break;
-        }
+    String s = "abcde"; 
+    String t = "abced";
+    char sArry [] = s.toCharArray();
+    char tArry [] = t.toCharArray();
+    for(int i=0;i<sArry.length;i++) {
+    
+        if(Arrays.equals(sArry, tArry)) {
+            
         } else {
-            map.put(s.charAt(i),t.charAt(i));
+                rotate(sArry);
         }
     }
-    System.err.println(map);
+   
+}
+public static char [] rotate(char [] sArry) {
+    char lastElement = sArry[sArry.length - 1];
+     for (int i = sArry.length - 1; i > 0; i--) {
+            sArry[i] = sArry[i - 1];
+        }
+        sArry[0] = lastElement;
+    return sArry;
 }
 }
