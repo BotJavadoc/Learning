@@ -1,38 +1,31 @@
 package collectionlearn;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DSAPlayaera {
+
     public static void main(String[] args) {
-       int n = 3;
+        int[] nums = { 1, 2, 3 };
 
-        // List to store results
-        List<String> result = new ArrayList<>();
+        List<List<Integer>> list = new ArrayList<>();
+        printSub(nums, 0, new ArrayList<>(), list);
 
-        // Start recursion with empty string
-        DSAPlayaera.generate(n, "", result);
-
-        // Print results
-        for (String s : result) {
-            System.out.print(s + " ");
-        }
-        System.out.println();
+        System.out.println("All subsequences:");
+        System.out.println(list);
     }
 
-    static void generate(int n, String curr, List<String> result) {
-        // Base case: if length is n, add to result
-        if (curr.length() == n) {
-            result.add(curr);
+    public static void printSub(int[] nums,int index,List<Integer> current,List<List<Integer>> result) {
+        if(index == nums.length) {
+            System.err.println(" index on each rec "+index);
+            result.add(new ArrayList<>(current));
+            System.out.println(result);
             return;
         }
-
-        // Always try adding '0'
-        generate(n, curr + "0", result);
-
-        // Add '1' only if previous char is not '1'
-        if (curr.isEmpty() || curr.charAt(curr.length() - 1) != '1') {
-            generate(n, curr + "1", result);
-        }
+        current.add(nums[index]);
+        printSub(nums, index+1, current, result);
+        current.remove(current.size()-1);
+        System.err.println(" index on each rec "+index);
+        printSub(nums, index+1, current, result);
     }
-
-       
 }
