@@ -1,47 +1,31 @@
 package oopslearning;
 
-abstract class Calucator {
-
-    abstract int sum(int a, int b);
-
-    abstract int multiply(int a, int b);
-
-    abstract int sub(int a, int b);
-
-    public void cal(int a, int b) {
-        int sumRes = sum(a, b);
-        int mulRes = multiply(a, b);
-        int subRes = sub(a, b);
-        System.out.println("Sum of two number is " + sumRes);
-        System.out.println("Multiplication of two number is " + mulRes);
-        System.out.println("Substraction of two number is " + subRes);
-    }
-
+abstract class Calucator implements MyInterface {
+    abstract void method();
 }
 
+interface MyInterface {
+    void method2();
+}
 class DoCalucation extends Calucator {
 
     @Override
-    int sum(int a, int b) {
-        return a + b;
+    void method() {
+        System.out.println("hit the method 1");
     }
 
     @Override
-    int multiply(int a, int b) {
-        return a * b;
+    public void method2() {
+       System.out.println("hit the method 2");
     }
-
-    @Override
-    int sub(int a, int b) {
-        return a - b;
-    }
-
+   
 }
 
 public class LearnAbstraction {
 
     public static void main(String[] args) {
-        Calucator doCalucation = new DoCalucation();
-        doCalucation.cal(100, 20);
+        Calucator cal = new DoCalucation();
+        cal.method();
+        cal.method2();
     }
 }
