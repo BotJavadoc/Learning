@@ -53,8 +53,24 @@ public class SinglyLinkedList {
                 }
                 curr = curr.next; 
             }
-       }   
-
+       }
+       
+       public static void insertInPos(int pos, int k , Node head) {
+            Node curr = head;
+            int counter = 0;
+            Node temp = new Node(k);
+            while(curr.next != null) {
+                if(pos == counter) {
+                    temp.next = curr.next;
+                    curr.next = temp;
+                    break;
+                } 
+                counter++;
+                 curr = curr.next;
+            }
+           
+       }
+ 
     public static void main(String[] args) {
         int arr [] = {1,2,3,4,3,5};
        display(addArray(arr));
@@ -66,6 +82,9 @@ public class SinglyLinkedList {
        delByPos(2, check);
        System.err.println("");
        System.err.println("delete by position ="+3);
+       display(check);
+       System.err.println("Inserting in btw");
+       insertInPos(1, 5, check);
        display(check);
     }
 
