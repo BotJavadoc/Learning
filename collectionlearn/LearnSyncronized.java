@@ -5,8 +5,6 @@ class Counter {
     void incr() {
         synchronized (this) {
          counter++;
-        }
-       
     }
 }
 
@@ -17,13 +15,13 @@ public class LearnSyncronized {
             Thread t1 = new Thread(()-> {
                 for (int i = 0; i < 10; i++) {
                     c.incr();
-                    System.err.println("counter value 1 "+c.counter);
+                    System.err.println("counter value one "+c.counter);
                 }
             });
             Thread t2 = new Thread(()-> {
                 for (int i = 0; i < 10; i++) {
                     c.incr();
-                    System.err.println("counter value 2 "+c.counter);
+                    System.err.println("counter value two "+c.counter);
                 }
             });
             t1.start();
